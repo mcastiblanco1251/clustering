@@ -56,10 +56,11 @@ app_des = st.expander('Descripción App')
 with app_des:
     st.write("""La app tiene un modelo para que te guies de un dataset y puedas hacer un mejor análisis, para usarlo con tus datos ten en cuenta:
 
-    - Tienen que estar pre-procesados.
-    - Que las variables que selecciones para el análisis deben ser coherentes.
-    - Te da la opción de descartar Variables.
-    - Los gráficas son en 2D por lo cual debes seleccionar las variables que quieres visualizar
+    - El archivo puede ser cargado en el menú de la parte izquierda
+    - EL dataset tiene que estar pre-procesados.
+    - Las variables que selecciones para el análisis deben ser coherentes.
+    - Puedes descartar Variables, Variables a Analizar y a Graficar.
+    - Los gráficas son en 2D por lo cual debes seleccionar max. 2 variables a visualizar.
     """)
 
 st.sidebar.header('Parámetros de Entrada Usario')
@@ -69,7 +70,7 @@ st.sidebar.header('Parámetros de Entrada Usario')
 # """)
 
 # Collects user input features into dataframe
-uploaded_file = st.sidebar.file_uploader("Cargue sus parámetros desde un archivo CSV", type=["csv"])
+uploaded_file = st.sidebar.file_uploader("Cargue su Dataset desde un archivo CSV", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 else:
