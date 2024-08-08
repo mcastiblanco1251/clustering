@@ -104,7 +104,7 @@ sns.lineplot(x=list(range(1, 11)), y=clusters, ax=ax)
 ax.set_title('Búsqueda por Codo')
 ax.set_xlabel('Clusters')
 ax.set_ylabel('Inercia')
-st.pyplot(plt.show())
+st.pyplot(fig)
 # Annotate arrow
 # ax.annotate('Posible punto de Codo', xy=(3, 140000), xytext=(3, 50000), xycoords='data',
 #              arrowprops=dict(arrowstyle='->', connectionstyle='arc3', color='blue', lw=2))
@@ -127,7 +127,7 @@ if st.checkbox("Ver ejemplo para el Data set Demo para ubicar el No. de Cluster 
     ax.annotate('Posible punto de Codo', xy=(5, 80000), xytext=(5, 150000), xycoords='data',
                  arrowprops=dict(arrowstyle='->', connectionstyle='arc3', color='blue', lw=2))
 
-    st.pyplot(plt.show())
+    st.pyplot(fig)
 
 st.subheader('Cluster Seleccionados')
 row1_3, row1_4 = st.columns((2, 2))
@@ -140,26 +140,26 @@ with row1_3:
 
     var3=st.multiselect('Variable Eje X', df.columns, df.columns[3])
     var4=st.multiselect('Variable Eje Y', df.columns, df.columns[4])
-    plt.figure(figsize=(12, 8))
+    fig=plt.figure(figsize=(12, 8))
     sns.scatterplot(X[var3[0]], X[var4[0]], hue=X['Labels'],
                     palette=sns.color_palette('hls', n))
     #sns.scatterplot(kmn.cluster_centers_[:, 0], kmn.cluster_centers_[:, 1],
     #                hue=range(n), s=200, ec='black', legend=False)
     plt.title(f'KMeans con {n} Clusters')
-    st.pyplot(plt.show())
+    st.pyplot(fig)
 with row1_4:
     n=int(st.number_input('Cluster 2', value=1))
     kmn = KMeans(n_clusters=n).fit(X)
     var5=st.multiselect('Variable Eje X2', df.columns, df.columns[3])
     var6=st.multiselect('Variable Eje Y2', df.columns, df.columns[4])
     X['Labels'] = kmn.labels_
-    plt.figure(figsize=(12, 8))
+    fig=plt.figure(figsize=(12, 8))
     sns.scatterplot(X[var5[0]], X[var6[0]], hue=X['Labels'],
                     palette=sns.color_palette('hls', n))
     #sns.scatterplot(kmn.cluster_centers_[:, 0], kmn.cluster_centers_[:, 1],
     #                hue=range(n), s=200, ec='black', legend=False)
     plt.title(f'KMeans con {n} Clusters')
-    st.pyplot(plt.show())
+    st.pyplot(fig)
 app_desc = st.expander('Conclusión App')
 with app_desc:
     st.write("""
@@ -189,7 +189,7 @@ if st.checkbox("Complementar Visual de Cluster",value=False):
     sns.swarmplot(x='Labels', y=y2[0], data=X, ax=ax)
     ax.set_title(f'Etiquetas de {y2[0]}')
 
-    st.pyplot(plt.show())
+    st.pyplot(fig)
 
 with st.expander("Contáctanos👉"):
     st.subheader('Quieres conocer mas de IA, ML o DL 👉[contactanos!!](http://ia.smartecorganic.com.co/index.php/contact/)')
