@@ -13,7 +13,7 @@ from sklearn import datasets
 #im = Image.open('C:/Users/Mcastiblanco/Documents/AGPC/DataScience2020/Streamlit/Arroz/apps/arroz.png')
 im2 = Image.open('r1.jpg')
 st.set_page_config(page_title='Cluster-App', layout="wide", page_icon=im2)
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 row1_1, row1_2 = st.columns((2, 3))
 
